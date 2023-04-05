@@ -7,6 +7,21 @@ return {
   -- first key is the mode
   n = {
     -- second key is the lefthand side of the map
+    ["K"] = {
+      function()
+        local filetype = vim.bo.filetype
+        if vim.tbl_contains({ "vim", "help" }, filetype) then
+          vim.cmd("h " .. vim.fn.expand "<cword>")
+        elseif vim.tbl_contains({ "man" }, filetype) then
+          vim.cmd("Man " .. vim.fn.expand "<cword>")
+        elseif vim.fn.expand "%:t" == "Cargo.toml" and require("crates").popup_available() then
+          require("crates").show_popup()
+        else
+          vim.lsp.buf.hover()
+        end
+      end,
+      desc = "Crates popup",
+    },
     -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
