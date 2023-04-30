@@ -8,52 +8,6 @@ return {
   { "mg979/vim-visual-multi" },
   { "simrat39/rust-tools.nvim" },
   {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " ",
-        "              ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
-        "               ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
-        "                     ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ",
-        "                       ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ",
-        "                      ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ",
-        "               ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ",
-        "              ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ",
-        "            ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ",
-        "            ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ",
-        "                 ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
-        "                  ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
-        " ",
-        " ██████╗ ██╗ ██████╗ ██████╗ ███╗   ██╗███╗   ██╗ ██████╗ ",
-        "██╔════╝ ██║██╔═══██╗██╔══██╗████╗  ██║████╗  ██║██╔═████╗",
-        "██║  ███╗██║██║   ██║██████╔╝██╔██╗ ██║██╔██╗ ██║██║██╔██║",
-        "██║   ██║██║██║   ██║██╔══██╗██║╚██╗██║██║╚██╗██║████╔╝██║",
-        "╚██████╔╝██║╚██████╔╝██║  ██║██║ ╚████║██║ ╚████║╚██████╔╝",
-        "╚═════╝ ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝ ╚═════╝",
-        " ",
-        " ",
-      }
-      return opts
-    end,
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, config)
-      -- config variable is the default configuration table for the setup function call
-      -- local null_ls = require "null-ls"
-      -- Check supported formatters and linters
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-      config.sources = {
-        -- Set a formatter
-        -- null_ls.builtins.formatting.stylua,
-        -- null_ls.builtins.formatting.prettier,
-      }
-      return config -- return final config table
-    end,
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     configs = {
       autotag = {
@@ -238,7 +192,7 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     opts = { --[[ things you want to change go here]]
-      shell = "/usr/bin/zsh",
+      shell = "/usr/bin/fish",
     },
   },
 }
