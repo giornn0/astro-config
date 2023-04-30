@@ -8,41 +8,6 @@ return {
   { "mg979/vim-visual-multi" },
   { "simrat39/rust-tools.nvim" },
   {
-    "nvim-treesitter/nvim-treesitter",
-    configs = {
-      autotag = {
-        enable = true,
-      },
-    },
-    opts = {
-      -- ensure_installed = { "lua" },
-    },
-  },
-  -- use mason-lspconfig to configure LSP installations
-  {
-    "williamboman/mason-lspconfig.nvim",
-    -- overrides `require("mason-lspconfig").setup(...)`
-    opts = {
-      -- ensure_installed = { "rust-analyzer" },
-    },
-  },
-  -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
-  {
-    "jay-babu/mason-null-ls.nvim",
-    -- overrides `require("mason-null-ls").setup(...)`
-    opts = {
-      -- ensure_installed = { "rust-analyzer", "stylua" },
-      ensure_installed = { "crates" },
-    },
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    -- overrides `require("mason-nvim-dap").setup(...)`
-    opts = {
-      -- ensure_installed = { "python" },
-    },
-  },
-  {
     "saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },
     requires = { { "nvim-lua/plenary.nvim" } },
@@ -191,7 +156,8 @@ return {
   {
     "akinsho/toggleterm.nvim",
     version = "*",
-    opts = { --[[ things you want to change go here]]
+    opts = {
+      --[[ things you want to change go here]]
       shell = "/usr/bin/fish",
     },
   },
