@@ -82,6 +82,9 @@ return {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
+  i = {
+    -- ["<Esc>"] = { "<C-\\><C-n>", desc = "Exit insert mode terminal" },
+  },
   v = {
     ["<leader>T"] = { name = "Crates" },
     ["<leader>Tu"] = { "<cmd>lua require('crates').update_creates()<cr>", desc = "Update crates" },

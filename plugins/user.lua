@@ -7,6 +7,7 @@ return {
   },
   { "mg979/vim-visual-multi" },
   { "simrat39/rust-tools.nvim" },
+  { "alvan/vim-closetag" },
   {
     "saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },

@@ -9,16 +9,16 @@
 local config = {
   -- Configure AstroNvim updates
   updater = {
-    remote = "origin", -- remote to use
-    channel = "stable", -- "stable" or "nightly"
-    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "nightly", -- branch name (NIGHTLY ONLY)
-    commit = nil, -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false, -- skip prompts about breaking changes
+    remote = "origin",     -- remote to use
+    channel = "stable",    -- "stable" or "nightly"
+    version = "latest",    -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "nightly",    -- branch name (NIGHTLY ONLY)
+    commit = nil,          -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil,     -- nil, true, false (nil will pin plugins on stable only)
+    skip_prompts = false,  -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_quit = false, -- automatically quit the current session after a successful update
-    remotes = { -- easily add new remotes to track
+    auto_quit = false,     -- automatically quit the current session after a successful update
+    remotes = {            -- easily add new remotes to track
       --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
       --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
       --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
@@ -60,19 +60,19 @@ local config = {
           },
         }
         opts.dap =
-          {
-            adapter = {
-              type = "executable",
-              command = "codelldb",
-              name = "rt_lldb",
-            },
-          }, require("rust-tools").setup { server = opts }
+            {
+              adapter = {
+                type = "executable",
+                command = "codelldb",
+                name = "rt_lldb",
+              },
+            }, require("rust-tools").setup { server = opts }
       end,
     },
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = true,     -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -90,7 +90,7 @@ local config = {
     },
   },
   lazy = {
-    defaults = { lazy = true },
+    defaults = { lazy = false },
     performance = {
       rtp = {
         -- customize default disabled vim plugins
@@ -118,7 +118,7 @@ if vim.g.neovide then
   vim.opt.guifont = { "Source Code Pro", "h14" }
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
-  vim.g.neovide_transparency = 0.6
+  vim.g.neovide_transparency = 0.75
   vim.g.neovide_scroll_animation_length = 0.3
   vim.g.neovide_hide_mouse_when_typing = false
   vim.g.neovide_fullscreen = true
@@ -136,4 +136,37 @@ if vim.g.neovide then
 end
 --nnoremap  <silent>   L  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 --nnoremap  <silent>   H  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
-return config
+--
+-- Auto close tag config
+--  filenames like *.xml, *.html, *.xhtml, ...
+--  These are the file extensions where this plugin is enabled.
+--
+vim.g.closetag_filenames = "*.html,*.xhtml,*.phtml"
+
+--  filenames like *.xml, *.xhtml, ...
+--  This will make the list of non-closing tags self-closing in the specified files.
+--
+vim.g.closetag_xhtml_filenames = "*.xhtml,*.jsx,*.tsx"
+
+-- filetypes like xml, html, xhtml, ...
+-- These are the file types where this plugin is enabled.
+
+vim.g.closetag_filetypes = "html,xhtml,phtml,blade.html"
+
+-- filetypes like xml, xhtml, ...
+-- This will make the list of non-closing tags self-closing in the specified files.
+
+vim.g.closetag_xhtml_filetypes = "xhtml,jsx"
+
+-- integer value [0|1]
+-- This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+--
+vim.g.closetag_emptyTags_caseSensitive = 1
+
+--
+--  Shortcut for closing tags, default is '>'
+--
+vim.g.closetag_shortcut = ">"
+
+-- integer value [0|1]
+-- Enables closing tags for React fragments -> <></> for all supported file types
