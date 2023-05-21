@@ -56,6 +56,7 @@ return {
     --Angular CMDS F
     ["<leader>N"] = { name = "Angular" },
     ["<leader>Ns"] = { ":edit term://ng serve<cr>", desc = "Serve angular project" },
+    ["<leader>Nb"] = { ":edit term://npm run build<cr>", desc = "Build angular project" },
     --Laravel CMDS F
     ["<leader>L"] = { name = "Laravel" },
     ["<leader>Ls"] = { ":edit term://php artisan server<cr>", desc = "Simple serve for laravel project" },
