@@ -4,8 +4,18 @@ return {
     autotag = {
       enable = true,
     },
+    filetypes = {
+      "html",
+      "blade.php",
+      "javascriptreact",
+      "typescriptreact",
+      "svelte",
+      "vue",
+      "tsx",
+      "jsx",
+    },
   },
   opts = {
-    -- ensure_installed = { "lua" },
+    ensure_installed = { "html", "tsx", "php" },
   },
 }
