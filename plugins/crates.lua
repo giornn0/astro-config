@@ -3,7 +3,6 @@ return {
   event = { "BufRead Cargo.toml" },
   requires = { { "nvim-lua/plenary.nvim" } },
   config = function()
-    local null_ls = require "null-ls"
     require("crates").setup {
       smart_insert = true,
       insert_closing_quote = true,

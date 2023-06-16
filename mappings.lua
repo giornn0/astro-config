@@ -1,5 +1,5 @@
 -- Mapping data with "desc" stored directly by vim.keymap.set().
---
+
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
@@ -78,6 +78,12 @@ return {
     ["<leader>TR"] = { "<cmd>lua require('crates').open_repository()<cr>", desc = "Open repository" },
     ["<leader>TD"] = { "<cmd>lua require('crates').open_documentation()<cr>", desc = "Open documentation" },
     ["<leader>TC"] = { "<cmd>lua require('crates').open_crates_io()<cr>", desc = "Open crates.io" },
+    --Flutter Tools mappings
+    ["<leader>F"] = { name = "Flutter" },
+    ["<leader>Fr"] = { "<cmd>FlutterRun<cr>", desc = "Run Flutter App" },
+    ["<leader>Fd"] = { "<cmd>FlutterRun<cr>", desc = "Show connected devices" },
+    ["<leader>Fl"] = { "<cmd>FlutterRun<cr>", desc = "Reload the current project" },
+    ["<leader>FR"] = { "<cmd>FlutterRun<cr>", desc = "Restart the current project" },
   },
   t = {
     -- setting a mapping to false will disable it

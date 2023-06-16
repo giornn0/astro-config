@@ -30,65 +30,7 @@ local config = {
     virtual_text = true,
     underline = true,
   },
-  -- Extend LSP configuration
-  lsp = {
-    -- enable servers that you already have installed without mason
-    servers = {
-      -- "pyright"
-    },
-    setup_handlers = {
-      -- add custom handler
-      rust_analyzer = function(_, opts)
-        opts.tools = {
-          -- rust-tools options
-          -- automatically call RustReloadWorkspace when writing to a Cargo.toml file.
-          reload_workspace_from_cargo_toml = true,
-          -- These apply to the default RustSetInlayHints command
-          inlay_hints = {
-            -- default: true
-            auto = true,
-          },
-        }
-        opts.settings = {
-          ["rust-analyzer"] = {
-            diagnostics = {
-              enable = true,
-            },
-            check = {
-              command = "clippy",
-            },
-          },
-        }
-        opts.dap =
-            {
-              adapter = {
-                type = "executable",
-                command = "codelldb",
-                name = "rt_lldb",
-              },
-            }, require("rust-tools").setup { server = opts }
-      end,
-    },
-    formatting = {
-      -- control auto formatting on save
-      format_on_save = {
-        enabled = true,     -- enable or disable format on save globally
-        allow_filetypes = { -- enable format on save for specified filetypes only
-          -- "go",
-        },
-        ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
-        },
-      },
-      disabled = { -- disable formatting capabilities for the listed language servers
-        -- "sumneko_lua",
-      },
-      timeout_ms = 1000, -- default format timeout
-      -- filter = function(client) -- fully override the default formatting function
-      --   return true
-      -- end
-    },
-  },
+
   lazy = {
     defaults = { lazy = true },
     performance = {
