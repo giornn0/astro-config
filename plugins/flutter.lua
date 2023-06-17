@@ -27,17 +27,31 @@ return {
         enabled = true,
         open_cmd = "10sp", -- command to use to open the log buffer
       },
-      lsp = {
-        color = { enabled = true },
-        settings = {
-          showTodos = true,
-          completeFunctionCalls = true,
-          renameFilesWithClasses = "prompt",
-          enableSnippets = true,
-        },
-      },
       widget_guides = {
         enabled = true,
+      },
+      lsp = {
+        color = {
+          enabled = true,
+        },
+        settings = {
+          showTodos = true,
+          completeFunctionCalls = false,
+          enableSnippets = true,
+          enableSdkFormatter = true,
+          renameFilesWithClasses = "prompt",
+          indentType = "Spaces",
+          quoteStyle = "AutoPreferDouble",
+          indentWidth = 2,
+          collapseSimpleStatement = "Always",
+          analysisExcludedFolders = {
+            vim.fn.expand "$HOME/AppData/Local/Pub/Cache",
+            vim.fn.expand "$HOME/.pub-cache",
+            vim.fn.expand "/opt/homebrew/",
+            vim.fn.expand "$HOME/tools/flutter/",
+          },
+          updateImportsOnRename = true,
+        },
       },
     }
   end,

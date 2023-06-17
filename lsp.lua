@@ -9,12 +9,8 @@ return {
     dartls = function(_, opts) require("flutter-tools").setup { lsp = opts } end,
     rust_analyzer = function(_, opts)
       opts.tools = {
-        -- rust-tools options
-        -- automatically call RustReloadWorkspace when writing to a Cargo.toml file.
         reload_workspace_from_cargo_toml = true,
-        -- These apply to the default RustSetInlayHints command
         inlay_hints = {
-          -- default: true
           auto = true,
         },
       }
@@ -43,30 +39,16 @@ return {
     format_on_save = {
       enabled = true,     -- enable or disable format on save globally
       allow_filetypes = { -- enable format on save for specified filetypes only
-        -- "dart",
+        "dart",
       },
       ignore_filetypes = { -- disable format on save for specified filetypes
-        -- "python",
       },
     },
-    disabled = { -- disable formatting capabilities for the listed language servers
-      "dartls",
+    disabled = {       -- disable formatting capabilities for the listed language servers
     },
     timeout_ms = 1000, -- default format timeout
     -- filter = function(client) -- fully override the default formatting function
     --   return true
     -- end
-  },
-  config = {
-    dartls = {
-      -- any changes you want to make to the LSP setup, for example
-      color = {
-        enabled = true,
-      },
-      settings = {
-        showTodos = true,
-        completeFunctionCalls = true,
-      },
-    },
   },
 }

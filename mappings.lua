@@ -3,9 +3,14 @@
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
+--
 return {
   -- first key is the mode
   n = {
+    --Diagnostics mappings
+    -- ["[d"] = { "<cmd> lua vim.diagnostic.goto_next()<cr>" },
+    -- ["e"] = { "<cmd> lua vim.diagnostic.open_float()<cr>" },
+    -- ["]d"] = { "<cmd> lua vim.diagnostic.goto_prev()<cr>" },
     -- second key is the lefthand side of the map
     ["K"] = {
       function()
@@ -20,7 +25,6 @@ return {
           vim.lsp.buf.hover()
         end
       end,
-      desc = "Crates popup",
     },
     -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
@@ -41,6 +45,8 @@ return {
     ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
     ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
     ["<leader>ml"] = { "<cmd>Lazy load vim-visual-multi<cr>", desc = "Activate multiline" },
+
+    --Tab Navigation
     ["L"] = {
       "<cmd>if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>",
       desc = "Tab right",
