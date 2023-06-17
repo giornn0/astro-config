@@ -14,7 +14,10 @@ return {
         "html",
         "docker_compose_language_service",
         "lua_ls",
-        "taplo",
+        "tailwindcss",
+        "cssls",
+        "gopls",
+        "revive",
       },
     },
   },
@@ -24,7 +27,7 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       -- ensure_installed = { "rust-analyzer", "stylua" },
-      ensure_installed = { "crates", "rustfmt", "stylua", "prettierd" },
+      ensure_installed = { "crates", "rustfmt", "stylua", "prettierd", "gofumpt" },
     },
   },
   {
