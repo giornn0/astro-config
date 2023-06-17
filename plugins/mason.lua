@@ -17,7 +17,7 @@ return {
         "tailwindcss",
         "cssls",
         "gopls",
-        "revive",
+        "elixirls",
       },
     },
   },
@@ -27,7 +27,7 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       -- ensure_installed = { "rust-analyzer", "stylua" },
-      ensure_installed = { "crates", "rustfmt", "stylua", "prettierd", "gofumpt" },
+      ensure_installed = { "crates", "rustfmt", "stylua", "prettierd", "gofumpt", "revive", "selene" },
     },
   },
   {

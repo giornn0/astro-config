@@ -62,7 +62,7 @@ return {
     --Angular CMDS F
     ["<leader>N"] = { name = "Angular" },
     ["<leader>Ns"] = { ":edit term://ng serve<cr>", desc = "Serve angular project" },
-    ["<leader>Nb"] = { ":edit term://npm run build<cr>", desc = "Build angular project" },
+    ["<leader>Nb"] = { ":edit term://yarn run build<cr>", desc = "Build angular project" },
     --Laravel CMDS F
     ["<leader>L"] = { name = "Laravel" },
     ["<leader>Ls"] = { ":edit term://php artisan server<cr>", desc = "Simple serve for laravel project" },
@@ -87,9 +87,15 @@ return {
     --Flutter Tools mappings
     ["<leader>F"] = { name = "Flutter" },
     ["<leader>Fr"] = { "<cmd>FlutterRun<cr>", desc = "Run Flutter App" },
-    ["<leader>Fd"] = { "<cmd>FlutterRun<cr>", desc = "Show connected devices" },
-    ["<leader>Fl"] = { "<cmd>FlutterRun<cr>", desc = "Reload the current project" },
-    ["<leader>FR"] = { "<cmd>FlutterRun<cr>", desc = "Restart the current project" },
+    ["<leader>Ff"] = {
+      "<cmd>lua vim.lsp.buf.format()<cr><cmd>write<cr><cmd>FlutterReanalyze<cr>",
+      desc = "Format Flutter App",
+    },
+    ["<leader>Fd"] = { "<cmd>FlutterDevices<cr>", desc = "Show connected devices" },
+    ["<leader>Fo"] = { "<cmd>FlutterOutlineToggle<cr>", desc = "Outline toggle" },
+    ["<leader>FO"] = { "<cmd>FlutterOutlineOpen<cr>", desc = "Open Outline window" },
+    ["<leader>Fl"] = { "<cmd>FlutterReload<cr>", desc = "Reload the current project" },
+    ["<leader>FR"] = { "<cmd>FlutterRestart<cr>", desc = "Restart the current project" },
   },
   t = {
     -- setting a mapping to false will disable it
