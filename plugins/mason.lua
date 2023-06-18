@@ -18,6 +18,7 @@ return {
         "cssls",
         "gopls",
         "elixirls",
+        "intelephense",
       },
     },
   },
@@ -27,7 +28,17 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       -- ensure_installed = { "rust-analyzer", "stylua" },
-      ensure_installed = { "crates", "rustfmt", "stylua", "prettierd", "gofumpt", "revive", "selene" },
+      ensure_installed = {
+        "crates",
+        "rustfmt",
+        "stylua",
+        "prettierd",
+        "gofumpt",
+        "revive",
+        "selene",
+        "phpstan",
+        "php-cs-fixer",
+      },
     },
   },
   {

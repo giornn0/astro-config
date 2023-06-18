@@ -19,7 +19,7 @@ return {
         },
       },
 
-      debugger = { -- integrate with nvim dap + install dart code debugger
+      debugger = {           -- integrate with nvim dap + install dart code debugger
         enabled = true,
         run_via_dap = false, -- use dap instead of a plenary job to run flutter apps
       },
@@ -45,10 +45,7 @@ return {
           indentWidth = 2,
           collapseSimpleStatement = "Always",
           analysisExcludedFolders = {
-            vim.fn.expand "$HOME/AppData/Local/Pub/Cache",
             vim.fn.expand "$HOME/.pub-cache",
-            vim.fn.expand "/opt/homebrew/",
-            vim.fn.expand "$HOME/tools/flutter/",
           },
           updateImportsOnRename = true,
         },
