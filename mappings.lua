@@ -89,13 +89,15 @@ return {
     ["<leader>Fr"] = { "<cmd>FlutterRun<cr>", desc = "Run Flutter App" },
     ["<leader>Ff"] = {
       "<cmd>lua vim.lsp.buf.format()<cr><cmd>write<cr><cmd>FlutterReanalyze<cr>",
-      desc = "Format Flutter App",
+      desc = "Format dart file",
     },
     ["<leader>Fd"] = { "<cmd>FlutterDevices<cr>", desc = "Show connected devices" },
     ["<leader>Fo"] = { "<cmd>FlutterOutlineToggle<cr>", desc = "Outline toggle" },
     ["<leader>FO"] = { "<cmd>FlutterOutlineOpen<cr>", desc = "Open Outline window" },
     ["<leader>Fl"] = { "<cmd>FlutterReload<cr>", desc = "Reload the current project" },
     ["<leader>FR"] = { "<cmd>FlutterRestart<cr>", desc = "Restart the current project" },
+    ["<leader>Fq"] = { "<cmd>FlutterQuit<cr>", desc = "Ends a running session" },
+    ["<leader>FL"] = { "<cmd>FlutterLspRestart<cr>", desc = "Restart the dart lsp server" },
   },
   t = {
     -- setting a mapping to false will disable it
