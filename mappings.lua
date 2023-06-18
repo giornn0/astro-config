@@ -3,7 +3,20 @@
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
---
+
+local function hover_info()
+  local filetype = vim.bo.filetype
+  if vim.tbl_contains({ "vim", "help" }, filetype) then
+    vim.cmd("h " .. vim.fn.expand "<cword>")
+  elseif vim.tbl_contains({ "man" }, filetype) then
+    vim.cmd("Man " .. vim.fn.expand "<cword>")
+  elseif vim.fn.expand "%:t" == "Cargo.toml" and require("crates").popup_available() then
+    require("crates").show_popup()
+  else
+    vim.lsp.buf.hover()
+  end
+end
+
 return {
   -- first key is the mode
   n = {
@@ -12,20 +25,7 @@ return {
     -- ["e"] = { "<cmd> lua vim.diagnostic.open_float()<cr>" },
     -- ["]d"] = { "<cmd> lua vim.diagnostic.goto_prev()<cr>" },
     -- second key is the lefthand side of the map
-    ["K"] = {
-      function()
-        local filetype = vim.bo.filetype
-        if vim.tbl_contains({ "vim", "help" }, filetype) then
-          vim.cmd("h " .. vim.fn.expand "<cword>")
-        elseif vim.tbl_contains({ "man" }, filetype) then
-          vim.cmd("Man " .. vim.fn.expand "<cword>")
-        elseif vim.fn.expand "%:t" == "Cargo.toml" and require("crates").popup_available() then
-          require("crates").show_popup()
-        else
-          vim.lsp.buf.hover()
-        end
-      end,
-    },
+    ["K"] = { hover_info, desc = "Hover info" },
     -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
@@ -87,10 +87,6 @@ return {
     --Flutter Tools mappings
     ["<leader>F"] = { name = "Flutter" },
     ["<leader>Fr"] = { "<cmd>FlutterRun<cr>", desc = "Run Flutter App" },
-    ["<leader>Ff"] = {
-      "<cmd>lua vim.lsp.buf.format()<cr><cmd>write<cr><cmd>FlutterReanalyze<cr>",
-      desc = "Format dart file",
-    },
     ["<leader>Fd"] = { "<cmd>FlutterDevices<cr>", desc = "Show connected devices" },
     ["<leader>Fo"] = { "<cmd>FlutterOutlineToggle<cr>", desc = "Outline toggle" },
     ["<leader>FO"] = { "<cmd>FlutterOutlineOpen<cr>", desc = "Open Outline window" },
@@ -98,6 +94,10 @@ return {
     ["<leader>FR"] = { "<cmd>FlutterRestart<cr>", desc = "Restart the current project" },
     ["<leader>Fq"] = { "<cmd>FlutterQuit<cr>", desc = "Ends a running session" },
     ["<leader>FL"] = { "<cmd>FlutterLspRestart<cr>", desc = "Restart the dart lsp server" },
+
+    --Diagnostic navigation
+    ["<C-x>"] = { function() vim.diagnostic.goto_next() end, desc = "Next diagnoistic" },
+    ["<C-z>"] = { function() vim.diagnostic.goto_prev() end, desc = "Prev diagnoistic" },
   },
   t = {
     -- setting a mapping to false will disable it

@@ -9,15 +9,16 @@ return {
     local on_attach = function(client, bufnr)
       local opts = { buffer = bufnr, remap = false }
       vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-      vim.keymap.set("n", "<leader>D", function() vim.diagnostic.open_float() end, opts)
-      vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-      vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-      vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
       vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
-      vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+      vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float() end, opts)
+      vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts)
+      vim.keymap.set("n", "<leader>ln", function() vim.lsp.buf.rename() end, opts)
+      vim.keymap.set("n", "<leader>ll", function() vim.diagnostic.setqflist() end, opts)
+      vim.keymap.set("n", "<leader>lf", function()
+        vim.lsp.buf.format()
+        vim.cmd "write"
+      end, opts)
       vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-      vim.keymap.set("n", "<leader>dl", function() vim.diagnostic.setqflist() end, opts)
     end
     require("flutter-tools").setup {
       decorations = {
@@ -32,7 +33,7 @@ return {
         },
       },
 
-      debugger = {           -- integrate with nvim dap + install dart code debugger
+      debugger = { -- integrate with nvim dap + install dart code debugger
         enabled = true,
         run_via_dap = false, -- use dap instead of a plenary job to run flutter apps
       },
@@ -44,7 +45,7 @@ return {
         enabled = true,
       },
       lsp = {
-        -- on_attach = on_attach,
+        on_attach = on_attach,
         color = {
           enabled = true,
         },
